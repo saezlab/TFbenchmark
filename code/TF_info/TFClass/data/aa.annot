@@ -1,0 +1,23 @@
+#Three_letter_code	One_letter_code	Amino_acid
+Ala	A	alanine
+Arg	R	arginine
+Asn	N	asparagine
+Asp	D	aspartic acid
+Asx	B	asparagine or aspartic acid
+Cys	C	cysteine
+Glu	E	glutamic acid
+Gln	Q	glutamine
+Glx	Z	glutamine or glutamic acid
+Gly	G	glycine
+His	H	histidine
+Ile	I	isoleucine
+Leu	L	leucine
+Lys	K	lysine
+Met	M	methionine
+Phe	F	phenylalanine
+Pro	P	proline
+Ser	S	serine
+Thr	T	threonine
+Trp	W	tryptophan
+Tyr	Y	tyrosine
+Val	V	valine

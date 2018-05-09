@@ -1,0 +1,1 @@
+fimo --oc ../data/TF_target_sources/TFBS_scanning/scanning_output/hocomoco_v11/fimo/ --parse-genomic-coord ../data/TF_target_sources/TFBS_scanning/TFBS_models/hocomoco_v11/HOCOMOCOv11_core_HUMAN_mono_meme_format.meme ../data/TF_target_sources/TFBS_scanning/promoter_sequences/Hsapiens.UCSC.hg38.knownGene.1000up.250down.hgncsymbol.fasta	
