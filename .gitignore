@@ -153,10 +153,13 @@ venv.bak/
 
 # mkdocs documentation
 /site
-
+i
 # mypy
 .mypy_cache/
 
 # directories
 /data/
 .Rproj.user
+
+# Misc
+Icon
