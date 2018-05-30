@@ -1,8 +1,8 @@
 library(plyr)
 library(reshape2)
 library(ggplot2)
-source("/Volumes/GoogleDrive/My Drive/projects/lib_basics.r")
-source("/Volumes/GoogleDrive/My Drive/projects/my_ggplot_theme.r")
+source("code/lib_basics.r")
+source("code/my_ggplot_theme.r")
 
 
 ############################################################################################################
