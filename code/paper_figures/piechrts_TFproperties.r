@@ -1,6 +1,4 @@
 rm(list = ls())
-home = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/'
-setwd(home)
 source('code/utils.r')
 
 
@@ -33,6 +31,7 @@ plot_TFrole_pie = function(TFs, var = 'regulatory_effect', colors = my_color_pal
     theme(axis.text=element_blank(), axis.ticks = element_blank(), axis.title = element_blank(), panel.border = element_blank(), panel.grid=element_blank()) 
   pie
 }
+
 load(file = 'data/TF_info/TFrole_genesets.rdata')
 names(TFrole_genesets)
 TFs = load_TFs_census()
