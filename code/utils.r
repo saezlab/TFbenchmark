@@ -45,7 +45,7 @@ load_TFs_census = function(){
   # TF_census = sort(setdiff(TF_census, ''))
   # write.table(TF_census, file = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/data/TF_census/vaquerizas/TF_census.txt', col.names = F, row.names = F, quote = F)
   # TF_census = read.delim(file = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/data/TF_census/vaquerizas/TF_census.txt', header = F, stringsAsFactors = F)[,1]
-  TF_census = unique(read.delim(file = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/data/TF_census/TFClass/huTF_classification.txt', header = F, stringsAsFactors = F)[,2])
+  TF_census = unique(read.delim(file = 'data/TF_census/TFClass/huTF_classification.txt', header = F, stringsAsFactors = F)[,2])
 }
 
 
@@ -74,26 +74,26 @@ load_repressors = function(strict = F){
 }
 
 load_complexes = function(){
-  complexes = read.delim(file = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/data/TF_info/regulation_type/uniprot/complex_classes.txt', header = T, stringsAsFactors = F)
+  complexes = read.delim(file = 'data/TF_info/regulation_type/uniprot/complex_classes.txt', header = T, stringsAsFactors = F)
 }
 
 
 load_CHregulation = function(){
-  CHregulation = read.delim(file = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/data/TF_info/epigenetics/Ehsani_2016/chromatin_modulator.txt', header = T, stringsAsFactors = F)
+  CHregulation = read.delim(file = 'data/TF_info/epigenetics/Ehsani_2016/chromatin_modulator.txt', header = T, stringsAsFactors = F)
   CHregulation$Chromatin_Opening_Type[ CHregulation$Chromatin_Opening_Type == ''] = "unknown"
   return(CHregulation)
 }
 
 
 load_TFclass_classes = function(){
-  TFclassification = unique(read.delim(file = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/data/TF_info/census/TFClass/huTF_classification.txt', header = T, stringsAsFactors = F))
+  TFclassification = unique(read.delim(file = 'data/TF_info/census/TFClass/huTF_classification.txt', header = T, stringsAsFactors = F))
   return(TFclassification)
 }
 
 
 
 load_TFtissues = function(){
-  TF_x_tissue = unique(read.delim(file = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/data/TF_info/expression/GTEx_TF_per_tissue.txt', header = F, stringsAsFactors = F))
+  TF_x_tissue = unique(read.delim(file = 'data/TF_info/expression/GTEx_TF_per_tissue.txt', header = F, stringsAsFactors = F))
   return(TF_x_tissue)
 }
 
