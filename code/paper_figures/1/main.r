@@ -1,6 +1,4 @@
 rm(list = ls())
-home = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/'
-setwd(home)
 source('code/utils.r')
 
 
