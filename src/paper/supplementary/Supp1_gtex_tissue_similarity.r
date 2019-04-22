@@ -1,3 +1,9 @@
+library(tidyverse)
+library(pheatmap)
+library(RColorBrewer)
+library(cowplot)
+library(furrr)
+
 rm(list = ls())
 home = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/'
 setwd(home)
