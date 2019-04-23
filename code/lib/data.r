@@ -33,7 +33,7 @@ load_proteins_annotation = function(type){
 ## TF properties
 load_TFs_census = function(){
   # message('Load TF census')
-  # TF_census_vaquerizas = read.delim('/Volumes/GoogleDrive/My Drive/projects/pathway_activities/DoRothEA/DATA/regulons/census_vaquerizas2009/nrg2538-s3_clean.txt', stringsAsFactors = F, header = F)
+  # TF_census_vaquerizas = read.delim('projects/pathway_activities/DoRothEA/DATA/regulons/census_vaquerizas2009/nrg2538-s3_clean.txt', stringsAsFactors = F, header = F)
   # TF_census = unique(TF_census_vaquerizas$V6[TF_census_vaquerizas$V1 %in% c('a', 'b') ])
   # TF_census = sort(setdiff(TF_census, ''))
   # write.table(TF_census, file = 'data/TF_census/vaquerizas/TF_census.txt', col.names = F, row.names = F, quote = F)
@@ -94,9 +94,9 @@ load_TFtissues = function(){
 
 ## benchmark
 load_Amp = function(){
-  # amp = (get(load(file = '/Volumes/GoogleDrive/My Drive/datasets/jsr-gdsc/CopyNumerVariation/Gene_level_CN_max.rdata')) >= 8) + 0
-  # fpkms = get(load('/Volumes/GoogleDrive/My Drive/projects/pathway_activities/rnaseq/data/expression/processed/rnaseq_cell_lines/fpkms_aggregatedduplicates.RData'))
-  # load('/Volumes/GoogleDrive/My Drive/databases/ensemblgenes_annot.Rdata')
+  # amp = (get(load(file = 'datasets/jsr-gdsc/CopyNumerVariation/Gene_level_CN_max.rdata')) >= 8) + 0
+  # fpkms = get(load('projects/pathway_activities/rnaseq/data/expression/processed/rnaseq_cell_lines/fpkms_aggregatedduplicates.RData'))
+  # load('databases/ensemblgenes_annot.Rdata')
   # ensemblgenes_annot = subset(ensemblgenes_annot, hgnc_symbol != '')
   # rownames(fpkms) = ensemblgenes_annot$hgnc_symbol[ match(rownames(fpkms), ensemblgenes_annot$ensembl_gene_id) ]
   # genes = intersect(rownames(amp), rownames(fpkms))
@@ -111,9 +111,9 @@ load_Amp = function(){
 
 
 load_homDel = function(){
-  # del = (get(load(file = '/Volumes/GoogleDrive/My Drive/datasets/jsr-gdsc/CopyNumerVariation/Gene_level_CN_max.rdata')) == 0 ) + 0
-  # fpkms = get(load('/Volumes/GoogleDrive/My Drive/projects/pathway_activities/rnaseq/data/expression/processed/rnaseq_cell_lines/fpkms_aggregatedduplicates.RData'))
-  # load('/Volumes/GoogleDrive/My Drive/databases/ensemblgenes_annot.Rdata')
+  # del = (get(load(file = 'datasets/jsr-gdsc/CopyNumerVariation/Gene_level_CN_max.rdata')) == 0 ) + 0
+  # fpkms = get(load('projects/pathway_activities/rnaseq/data/expression/processed/rnaseq_cell_lines/fpkms_aggregatedduplicates.RData'))
+  # load('databases/ensemblgenes_annot.Rdata')
   # ensemblgenes_annot = subset(ensemblgenes_annot, hgnc_symbol != '')
   # rownames(fpkms) = ensemblgenes_annot$hgnc_symbol[ match(rownames(fpkms), ensemblgenes_annot$ensembl_gene_id) ]
   # genes = intersect(rownames(del), rownames(fpkms))
