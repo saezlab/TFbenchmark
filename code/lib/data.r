@@ -36,9 +36,9 @@ load_TFs_census = function(){
   # TF_census_vaquerizas = read.delim('/Volumes/GoogleDrive/My Drive/projects/pathway_activities/DoRothEA/DATA/regulons/census_vaquerizas2009/nrg2538-s3_clean.txt', stringsAsFactors = F, header = F)
   # TF_census = unique(TF_census_vaquerizas$V6[TF_census_vaquerizas$V1 %in% c('a', 'b') ])
   # TF_census = sort(setdiff(TF_census, ''))
-  # write.table(TF_census, file = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/data/TF_census/vaquerizas/TF_census.txt', col.names = F, row.names = F, quote = F)
-  # TF_census = read.delim(file = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/data/TF_census/vaquerizas/TF_census.txt', header = F, stringsAsFactors = F)[,1]
-  TF_census = unique(read.delim(file = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/data/TF_census/TFClass/huTF_census.txt', header = F, stringsAsFactors = F)[,1])
+  # write.table(TF_census, file = 'data/TF_census/vaquerizas/TF_census.txt', col.names = F, row.names = F, quote = F)
+  # TF_census = read.delim(file = 'data/TF_census/vaquerizas/TF_census.txt', header = F, stringsAsFactors = F)[,1]
+  TF_census = unique(read.delim(file = 'data/TF_census/TFClass/huTF_census.txt', header = F, stringsAsFactors = F)[,1])
 }
 
 
@@ -67,26 +67,26 @@ load_repressors = function(strict = F){
 }
 
 load_complexes = function(){
-  complexes = read.delim(file = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/data/TF_info/regulation_type/uniprot/complex_classes.txt', header = T, stringsAsFactors = F)
+  complexes = read.delim(file = 'data/TF_info/regulation_type/uniprot/complex_classes.txt', header = T, stringsAsFactors = F)
 }
 
 
 load_CHregulation = function(){
-  CHregulation = read.delim(file = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/data/TF_info/epigenetics/Ehsani_2016/chromatin_modulator.txt', header = T, stringsAsFactors = F)
+  CHregulation = read.delim(file = 'data/TF_info/epigenetics/Ehsani_2016/chromatin_modulator.txt', header = T, stringsAsFactors = F)
   CHregulation$Chromatin_Opening_Type[ CHregulation$Chromatin_Opening_Type == ''] = "unknown"
   return(CHregulation)
 }
 
 
 load_TFclass_classes = function(){
-  TFclassification = unique(read.delim(file = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/data/TF_info/census/TFClass/huTF_classification.txt', header = T, stringsAsFactors = F))
+  TFclassification = unique(read.delim(file = 'data/TF_info/census/TFClass/huTF_classification.txt', header = T, stringsAsFactors = F))
   return(TFclassification)
 }
 
 
 
 load_TFtissues = function(){
-  TF_x_tissue = unique(read.delim(file = '/Volumes/GoogleDrive/My Drive/projects/TFbenchmark/data/TF_info/expression/GTEx_TF_per_tissue.txt', header = F, stringsAsFactors = F))
+  TF_x_tissue = unique(read.delim(file = 'data/TF_info/expression/GTEx_TF_per_tissue.txt', header = F, stringsAsFactors = F))
   return(TF_x_tissue)
 }
 
@@ -94,50 +94,57 @@ load_TFtissues = function(){
 
 ## benchmark
 load_Amp = function(){
-  amp = (get(load(file = '/Volumes/GoogleDrive/My Drive/datasets/jsr-gdsc/CopyNumerVariation/Gene_level_CN_max.rdata')) >= 8) + 0
-  fpkms = get(load('/Volumes/GoogleDrive/My Drive/projects/pathway_activities/rnaseq/data/expression/processed/rnaseq_cell_lines/fpkms_aggregatedduplicates.RData'))
-  load('/Volumes/GoogleDrive/My Drive/databases/ensemblgenes_annot.Rdata')
-  ensemblgenes_annot = subset(ensemblgenes_annot, hgnc_symbol != '')
-  rownames(fpkms) = ensemblgenes_annot$hgnc_symbol[ match(rownames(fpkms), ensemblgenes_annot$ensembl_gene_id) ]
-  genes = intersect(rownames(amp), rownames(fpkms))
-  samples = intersect(colnames(amp), colnames(fpkms))
-  fpkms = fpkms[ genes, samples]
-  amp = amp[ genes, samples ]
-  amp[ fpkms < 2 ] = 0
+  # amp = (get(load(file = '/Volumes/GoogleDrive/My Drive/datasets/jsr-gdsc/CopyNumerVariation/Gene_level_CN_max.rdata')) >= 8) + 0
+  # fpkms = get(load('/Volumes/GoogleDrive/My Drive/projects/pathway_activities/rnaseq/data/expression/processed/rnaseq_cell_lines/fpkms_aggregatedduplicates.RData'))
+  # load('/Volumes/GoogleDrive/My Drive/databases/ensemblgenes_annot.Rdata')
+  # ensemblgenes_annot = subset(ensemblgenes_annot, hgnc_symbol != '')
+  # rownames(fpkms) = ensemblgenes_annot$hgnc_symbol[ match(rownames(fpkms), ensemblgenes_annot$ensembl_gene_id) ]
+  # genes = intersect(rownames(amp), rownames(fpkms))
+  # samples = intersect(colnames(amp), colnames(fpkms))
+  # fpkms = fpkms[ genes, samples]
+  # amp = amp[ genes, samples ]
+  # amp[ fpkms < 2 ] = 0
+  # save(amp, file = 'data/regulons_QC/B3_cell_lines/cna/amplifications.rdata')
+  load('data/regulons_QC/B3_cell_lines/cna/amplifications.rdata')
   return(amp)
 }
 
 
 load_homDel = function(){
-  del = (get(load(file = '/Volumes/GoogleDrive/My Drive/datasets/jsr-gdsc/CopyNumerVariation/Gene_level_CN_max.rdata')) == 0 ) + 0
-  fpkms = get(load('/Volumes/GoogleDrive/My Drive/projects/pathway_activities/rnaseq/data/expression/processed/rnaseq_cell_lines/fpkms_aggregatedduplicates.RData'))
-  load('/Volumes/GoogleDrive/My Drive/databases/ensemblgenes_annot.Rdata')
-  ensemblgenes_annot = subset(ensemblgenes_annot, hgnc_symbol != '')
-  rownames(fpkms) = ensemblgenes_annot$hgnc_symbol[ match(rownames(fpkms), ensemblgenes_annot$ensembl_gene_id) ]
-  genes = intersect(rownames(del), rownames(fpkms))
-  samples = intersect(colnames(del), colnames(fpkms))
-  fpkms = fpkms[ genes, samples]
-  del = del[ genes, samples ]
-  del[ fpkms > 2 ] = 0
+  # del = (get(load(file = '/Volumes/GoogleDrive/My Drive/datasets/jsr-gdsc/CopyNumerVariation/Gene_level_CN_max.rdata')) == 0 ) + 0
+  # fpkms = get(load('/Volumes/GoogleDrive/My Drive/projects/pathway_activities/rnaseq/data/expression/processed/rnaseq_cell_lines/fpkms_aggregatedduplicates.RData'))
+  # load('/Volumes/GoogleDrive/My Drive/databases/ensemblgenes_annot.Rdata')
+  # ensemblgenes_annot = subset(ensemblgenes_annot, hgnc_symbol != '')
+  # rownames(fpkms) = ensemblgenes_annot$hgnc_symbol[ match(rownames(fpkms), ensemblgenes_annot$ensembl_gene_id) ]
+  # genes = intersect(rownames(del), rownames(fpkms))
+  # samples = intersect(colnames(del), colnames(fpkms))
+  # fpkms = fpkms[ genes, samples]
+  # del = del[ genes, samples ]
+  # del[ fpkms > 2 ] = 0
+  # save(del, file = 'data/regulons_QC/B3_cell_lines/cna/deletions.rdata')
+  load('data/regulons_QC/B3_cell_lines/cna/deletions.rdata')
   return(del)
 }
 
 
 load_ACHILLES = function(){
-  essentiality = get(load('/Volumes/GoogleDrive/My Drive/datasets/achilles/v2.20.2/Achilles_v2.20.2_GeneSolutions.clean.Rdata'))
+  load('data/regulons_QC/B3_cell_lines/essentiality/Achilles_v2.20.2_GeneSolutions.clean.Rdata')
+  return(essentiality)
 }
 
 load_DRIVEproject = function(){
-  library(stringr)
-  essentiality = readRDS('data/regulons_QC/B3_cell_lines/essentiality/DRIVE_ATARiS_data.rds')
-  # manage names
-  colnames(essentiality) = sapply(strsplit(colnames(essentiality), split = '_'), head, 1)
-  celllines_annotation = get(load('../../datasets/jsr-gdsc/R_objects/cell_lines/COSMIC_covariates_19062013_updated_luz.RData'))
-  celllines_annotation$Cell.line.name_formated = str_replace_all(celllines_annotation$Cell.line.name, "[[:punct:]]", " ") %>% gsub(' ', '', .) %>% tolower(.)
-  essentiality = essentiality[ , colnames(essentiality) %in%  celllines_annotation$Cell.line.name_formated ]
-  colnames(essentiality) = celllines_annotation$CosmicID[ match(colnames(essentiality), celllines_annotation$Cell.line.name_formated) ]
-  # z-transform
-  essentiality = as.matrix(essentiality)
+  # require(stringr)
+  # essentiality = readRDS('data/regulons_QC/B3_cell_lines/essentiality/DRIVE_ATARiS_data.rds')
+  # # manage names
+  # colnames(essentiality) = sapply(strsplit(colnames(essentiality), split = '_'), head, 1)
+  # celllines_annotation = get(load('../../datasets/jsr-gdsc/R_objects/cell_lines/COSMIC_covariates_19062013_updated_luz.RData'))
+  # celllines_annotation$Cell.line.name_formated = str_replace_all(celllines_annotation$Cell.line.name, "[[:punct:]]", " ") %>% gsub(' ', '', .) %>% tolower(.)
+  # essentiality = essentiality[ , colnames(essentiality) %in%  celllines_annotation$Cell.line.name_formated ]
+  # colnames(essentiality) = celllines_annotation$CosmicID[ match(colnames(essentiality), celllines_annotation$Cell.line.name_formated) ]
+  # # z-transform
+  # essentiality = as.matrix(essentiality)
+  # save(essentiality, file = 'data/regulons_QC/B3_cell_lines/essentiality/DRIVE_ATARiS_data_clean.rdata')
+  load('data/regulons_QC/B3_cell_lines/essentiality/DRIVE_ATARiS_data_clean.rdata')
   return(essentiality)
 }
 
